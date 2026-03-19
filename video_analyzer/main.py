@@ -79,8 +79,8 @@ class VideoSplitter:
         chunks = []
         
         logger.info(
-            f"[x] Нарезка видео ({duration:.1f} сек) на чанки по " \
-            f"{self._chunk_duration} сек...")
+            f"[x] Cutting video ({duration:.1f} sec.) by chunks with " \
+            f"{self._chunk_duration} seconds")
         
         for i, start in enumerate(range(0, int(duration), self._chunk_duration)):
             end = min(start + self._chunk_duration, duration)
@@ -102,11 +102,9 @@ class VideoSplitter:
                     duration=end - start
                 )
             )
-            logger.info(f"[x] Создан чанк {i}")
+            logger.info(f"[x] Created chunk {i}")
         
         clip.close()
-        logger.info(f"[x] Создано {len(chunks)} чанков")
-
         return chunks
 
 
